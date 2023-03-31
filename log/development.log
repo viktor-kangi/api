@@ -1,0 +1,975 @@
+  [1m[35m (24.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (9.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateOrders (20230330105159)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "orders" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "customer_id" integer, "order_item_id" integer, "total" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230330105159"]]
+  [1m[36mTRANSACTION (8.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateOrderItems (20230330105739)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "order_items" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "price" integer, "quantity" integer, "image_url" varchar, "order_id" integer, "subtotal" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230330105739"]]
+  [1m[36mTRANSACTION (8.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUsers (20230330201850)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar, "email" varchar, "password_digest" varchar, "address" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230330201850"]]
+  [1m[36mTRANSACTION (8.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateMenuItems (20230330213913)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "menu_items" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "image_url" varchar, "description" varchar, "price" integer, "menu_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230330213913"]]
+  [1m[36mTRANSACTION (7.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateMenus (20230331193137)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "menus" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "image_url" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230331193137"]]
+  [1m[36mTRANSACTION (8.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-03-31 07:17:05.426103"], ["updated_at", "2023-03-31 07:17:05.426103"]]
+  [1m[36mTRANSACTION (7.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMenu Create (0.3ms)[0m  [1m[32mINSERT INTO "menus" ("name", "image_url", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Salads"], ["image_url", "https://nbtrangmanchclub.com/wp-content/uploads/2017/10/Soups-4.png"], ["created_at", "2023-03-31 07:18:09.987993"], ["updated_at", "2023-03-31 07:18:09.987993"]]
+  [1m[36mTRANSACTION (7.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMenu Create (0.4ms)[0m  [1m[32mINSERT INTO "menus" ("name", "image_url", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Meats"], ["image_url", "https://vgmeats.ca/content/uploads/the-ethics-of-food-and-why-we-care.jpg"], ["created_at", "2023-03-31 07:18:10.001079"], ["updated_at", "2023-03-31 07:18:10.001079"]]
+  [1m[36mTRANSACTION (6.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMenu Create (0.6ms)[0m  [1m[32mINSERT INTO "menus" ("name", "image_url", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Soup"], ["image_url", "https://www.thespruceeats.com/thmb/KviPmdjGAR_7dQy1t2UtoicVb9c=/3550x2366/filters:fill(auto,1)/african-peanut-butter-soup-recipe-39554-hero-01-5d04efd6e03a43b68710a1d44b55607b.jpg"], ["created_at", "2023-03-31 07:18:10.013264"], ["updated_at", "2023-03-31 07:18:10.013264"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMenu Create (0.4ms)[0m  [1m[32mINSERT INTO "menus" ("name", "image_url", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Vegan"], ["image_url", "https://www.femalefirst.co.uk/image-library/land/1000/v/vegan-food-jaywing-pr.jpg"], ["created_at", "2023-03-31 07:18:10.024602"], ["updated_at", "2023-03-31 07:18:10.024602"]]
+  [1m[36mTRANSACTION (6.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMenu Load (0.3ms)[0m  [1m[34mSELECT "menus".* FROM "menus" WHERE "menus"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMenuItem Create (0.3ms)[0m  [1m[32mINSERT INTO "menu_items" ("name", "image_url", "description", "price", "menu_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Irio"], ["image_url", "http://africanmiliki.com/images/Irio.jpg"], ["description", "Mashed potatoes and peas mixed with corn and onions seasoned with black pepper and salt"], ["price", 300], ["menu_id", 1], ["created_at", "2023-03-31 07:18:10.084070"], ["updated_at", "2023-03-31 07:18:10.084070"]]
+  [1m[36mTRANSACTION (5.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMenu Load (0.1ms)[0m  [1m[34mSELECT "menus".* FROM "menus" WHERE "menus"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMenuItem Create (0.4ms)[0m  [1m[32mINSERT INTO "menu_items" ("name", "image_url", "description", "price", "menu_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Coconut Rice"], ["image_url", "http://africanmiliki.com/images/coconut-rice-dish.jpg"], ["description", "Long grain rice cooked in chicken broth and freshly squeezed coconut milk seasoned with oma's Jollof Rice Seasoning and a dash of nutmeg"], ["price", 300], ["menu_id", 1], ["created_at", "2023-03-31 07:18:10.095416"], ["updated_at", "2023-03-31 07:18:10.095416"]]
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMenu Load (0.1ms)[0m  [1m[34mSELECT "menus".* FROM "menus" WHERE "menus"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMenuItem Create (0.3ms)[0m  [1m[32mINSERT INTO "menu_items" ("name", "image_url", "description", "price", "menu_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Chicken Pepper Soup"], ["image_url", "http://africanmiliki.com/images/chicken-pepper-soup.jpg"], ["description", "Stewing chicken cooked, deboned, diced and allowed to simmer in chicken stock and oma's Pepper Soup Seasoning until perfect '. . . for the soul'"], ["price", 300], ["menu_id", 1], ["created_at", "2023-03-31 07:18:10.106753"], ["updated_at", "2023-03-31 07:18:10.106753"]]
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMenu Load (0.1ms)[0m  [1m[34mSELECT "menus".* FROM "menus" WHERE "menus"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMenuItem Create (0.4ms)[0m  [1m[32mINSERT INTO "menu_items" ("name", "image_url", "description", "price", "menu_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Goat Meat Pepper"], ["image_url", "http://africanmiliki.com/images/Goat-pepper-soup-bowl.jpg"], ["description", "A medly of diced goat tripe and organ meat simmered in it's own broth and oma's Pepper Soup Seasoning get's the stomach ready for more goodness. *Hot pepper powder as well as bitter utazi powder is available on demand"], ["price", 300], ["menu_id", 1], ["created_at", "2023-03-31 07:18:10.118528"], ["updated_at", "2023-03-31 07:18:10.118528"]]
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMenu Load (0.2ms)[0m  [1m[34mSELECT "menus".* FROM "menus" WHERE "menus"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMenuItem Create (0.4ms)[0m  [1m[32mINSERT INTO "menu_items" ("name", "image_url", "description", "price", "menu_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Nsala"], ["image_url", "http://africanmiliki.com/images/Nsala-soup.jpg"], ["description", "Oxtail slow cooked until soft in onion water seasoned with oma's Jollof Rice Seasoning, then deboned and diced except for the tiny ends. A further simmering in its own stock thickened with tomato paste to which more of the seasoning has been added takes this simple soup to beyond yummy!"], ["price", 300], ["menu_id", 1], ["created_at", "2023-03-31 07:18:10.132394"], ["updated_at", "2023-03-31 07:18:10.132394"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMenu Load (0.2ms)[0m  [1m[34mSELECT "menus".* FROM "menus" WHERE "menus"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMenuItem Create (0.4ms)[0m  [1m[32mINSERT INTO "menu_items" ("name", "image_url", "description", "price", "menu_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Oxtail"], ["image_url", "http://africanmiliki.com/images/oxtail-soup-bowl.jpg"], ["description", "Cut up fresh catfish fillet is added to a simmering pot of liquefied onion, tomato and dry crayfish aromatized with oma's Pepper Soup Seasoning then thickened with yam powder. *Hot pepper powder as well as bitter utazi powder is available on demand"], ["price", 300], ["menu_id", 1], ["created_at", "2023-03-31 07:18:10.145298"], ["updated_at", "2023-03-31 07:18:10.145298"]]
+  [1m[36mTRANSACTION (5.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMenu Load (0.2ms)[0m  [1m[34mSELECT "menus".* FROM "menus" WHERE "menus"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mMenuItem Create (0.3ms)[0m  [1m[32mINSERT INTO "menu_items" ("name", "image_url", "description", "price", "menu_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Nyama Choma"], ["image_url", "https://cdn.tasteatlas.com/images/dishes/632c5f0e3bc94f1784c1c6c89bf03d2e.jpg?mw=1300"], ["description", "Nyama choma is Kenya's unofficial national dish, meaning barbecued meat in the Swahili language. The meat is usually goat or beef, served roasted throughout the country, from roadside shacks to fine restaurants. It is often paired with local beer and side dishes such as ugali."], ["price", 650], ["menu_id", 2], ["created_at", "2023-03-31 07:18:10.160336"], ["updated_at", "2023-03-31 07:18:10.160336"]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMenu Load (0.1ms)[0m  [1m[34mSELECT "menus".* FROM "menus" WHERE "menus"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mMenuItem Create (0.2ms)[0m  [1m[32mINSERT INTO "menu_items" ("name", "image_url", "description", "price", "menu_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Peri Peri Chicken"], ["image_url", "https://cdn.tasteatlas.com/images/dishes/c6b34701a6774dca83b486992d618a4c.jpg?mw=1300"], ["description", "Peri peri chicken is a Mozambican dish consisting of grilled or roasted chicken that is often served with a creamy and spicy coconut sauce. Before grilling, the meat is traditionally marinated in cumin, garlic, paprika, lemon juice, and bird's eye chilis, giving the chicken a unique flavor."], ["price", 650], ["menu_id", 2], ["created_at", "2023-03-31 07:18:10.171917"], ["updated_at", "2023-03-31 07:18:10.171917"]]
+  [1m[36mTRANSACTION (5.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMenu Load (0.1ms)[0m  [1m[34mSELECT "menus".* FROM "menus" WHERE "menus"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mMenuItem Create (0.3ms)[0m  [1m[32mINSERT INTO "menu_items" ("name", "image_url", "description", "price", "menu_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Bunny Chow"], ["image_url", "https://cdn.tasteatlas.com/Images/Dishes/26ac876911e042cd87c6e6be20135d73.jpg?mw=1300"], ["description", "Bunny chow is a South African dish consisting of a half or a quarter loaf of bread that is hollowed out and stuffed with curry that has been cooked with kidney beans or meats such as mutton, chicken, and lamb. It is traditionally consumed without utensils."], ["price", 650], ["menu_id", 2], ["created_at", "2023-03-31 07:18:10.182801"], ["updated_at", "2023-03-31 07:18:10.182801"]]
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMenu Load (0.1ms)[0m  [1m[34mSELECT "menus".* FROM "menus" WHERE "menus"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mMenuItem Create (0.3ms)[0m  [1m[32mINSERT INTO "menu_items" ("name", "image_url", "description", "price", "menu_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Sambusa"], ["image_url", "https://cdn.tasteatlas.com/images/dishes/8fe2189a9a6e4815907eeef210c855c5.jpg?mw=1300"], ["description", "Tibs is an Ethiopian dish consisting of stir-fried meat and vegetables. The dish can be served in a wide variety of manners – ranging from mild to hot and containing a small amount of vegetables, lots of vegetables, or no vegetables at all."], ["price", 650], ["menu_id", 2], ["created_at", "2023-03-31 07:18:10.195520"], ["updated_at", "2023-03-31 07:18:10.195520"]]
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMenu Load (0.1ms)[0m  [1m[34mSELECT "menus".* FROM "menus" WHERE "menus"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mMenuItem Create (0.4ms)[0m  [1m[32mINSERT INTO "menu_items" ("name", "image_url", "description", "price", "menu_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Yassa"], ["image_url", "https://cdn.tasteatlas.com/Images/Dishes/c5c5d59e95d9475ba7426a57830e10ea.jpg?mw=1300"], ["description", "Yassa is Senegal's national dish, a stew consisting of chicken that is marinated in lemon, lots of onions, and vinegar. The chicken needs to marinate in the mixture for at least eight hours, making sure that the lemon juice and vinegar take the bite out of the onions and tenderize the tough poultry found in the Casamance region."], ["price", 650], ["menu_id", 2], ["created_at", "2023-03-31 07:18:10.215673"], ["updated_at", "2023-03-31 07:18:10.215673"]]
+  [1m[36mTRANSACTION (5.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMenu Load (0.2ms)[0m  [1m[34mSELECT "menus".* FROM "menus" WHERE "menus"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mMenuItem Create (0.3ms)[0m  [1m[32mINSERT INTO "menu_items" ("name", "image_url", "description", "price", "menu_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Kitfo"], ["image_url", "https://cdn.tasteatlas.com/Images/Dishes/1da821e8c98a42f38ede3fd8556652d2.jpg?mw=1300"], ["description", "Kitfo is a popular Ethiopian dish consisting of raw beef that is freshly ground and combined with Ethiopian butter (niter kibbeh) and spices such as chili and salt. The dish is served with a variety of breads, with injera being a staple of every restaurant that serves kitfo."], ["price", 650], ["menu_id", 2], ["created_at", "2023-03-31 07:18:10.229883"], ["updated_at", "2023-03-31 07:18:10.229883"]]
+  [1m[36mTRANSACTION (13.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMenu Load (0.1ms)[0m  [1m[34mSELECT "menus".* FROM "menus" WHERE "menus"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMenuItem Create (0.4ms)[0m  [1m[32mINSERT INTO "menu_items" ("name", "image_url", "description", "price", "menu_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Harira"], ["image_url", "https://cdn.tasteatlas.com/Images/Dishes/31c8c0d449884b7692a0b12910f25687.jpg?mw=1300"], ["description", "Harira is made from a variety of legumes such as lentils, fava beans, and chickpeas, tomato sauce, harissa paste, and fresh herbs such as parsley, turmeric, saffron, lemon, caraway seeds, and coriander, but every region in Morocco has its own version of the soup."], ["price", 400], ["menu_id", 3], ["created_at", "2023-03-31 07:18:10.251334"], ["updated_at", "2023-03-31 07:18:10.251334"]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMenu Load (0.2ms)[0m  [1m[34mSELECT "menus".* FROM "menus" WHERE "menus"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMenuItem Create (0.4ms)[0m  [1m[32mINSERT INTO "menu_items" ("name", "image_url", "description", "price", "menu_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Lablabi"], ["image_url", "https://cdn.tasteatlas.com/Images/Dishes/74219c2b001f4fbd80ef418ae398d142.jpg?mw=1300"], ["description", "It is traditionally served ladled over chunks of stale crusty bread, drizzled with olive oil, sometimes even with either vinegar or lemon or lime juice, and often garnished with cilantro, parsley, and scallions. Special versions of lablabi include capers, olives, pickled vegetables and tuna, while another variety called hergma is made with cow's hooves."], ["price", 400], ["menu_id", 3], ["created_at", "2023-03-31 07:18:10.266232"], ["updated_at", "2023-03-31 07:18:10.266232"]]
+  [1m[36mTRANSACTION (6.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMenu Load (0.2ms)[0m  [1m[34mSELECT "menus".* FROM "menus" WHERE "menus"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMenuItem Create (0.5ms)[0m  [1m[32mINSERT INTO "menu_items" ("name", "image_url", "description", "price", "menu_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Besara"], ["image_url", "https://cdn.tasteatlas.com/images/dishes/2680250fc980401aa4c17098057baed6.jpg?mw=1300"], ["description", "Bessara is a comforting Moroccan dish made with puréed beans – either split peas or dried fava beans. It can be prepared in the form of a soup or porridge, while the thicker versions are commonly used as a dip. The puréed beans are typically seasoned with olive oil, lemon juice, and garlic, and the dish is often served with paprika and cumin on the side, while crusty Moroccan bread is almost mandatory."], ["price", 400], ["menu_id", 3], ["created_at", "2023-03-31 07:18:10.280973"], ["updated_at", "2023-03-31 07:18:10.280973"]]
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMenu Load (0.1ms)[0m  [1m[34mSELECT "menus".* FROM "menus" WHERE "menus"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMenuItem Create (0.3ms)[0m  [1m[32mINSERT INTO "menu_items" ("name", "image_url", "description", "price", "menu_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Banga Soup"], ["image_url", "https://cdn.tasteatlas.com/images/dishes/2ca9862fc6ad46d299a714c04109903c.jpg?mw=1300"], ["description", "Banga or ofe akwu is a flavorful Nigerian soup made with palm fruit, beef or dried fish, vegetables, and seasonings such as salt and chili pepper. The soup is traditionally paired with various fufu dishes. The name of the dish is derived from two words: ofe, meaning soup or stew, and akwu, meaning palm fruit."], ["price", 400], ["menu_id", 3], ["created_at", "2023-03-31 07:18:10.296492"], ["updated_at", "2023-03-31 07:18:10.296492"]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMenu Load (0.2ms)[0m  [1m[34mSELECT "menus".* FROM "menus" WHERE "menus"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMenuItem Create (0.4ms)[0m  [1m[32mINSERT INTO "menu_items" ("name", "image_url", "description", "price", "menu_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Achu Soup"], ["image_url", "https://cdn.tasteatlas.com/images/dishes/50ea438b25cc416d8c0d977bc144fdbf.jpg?mw=1300"], ["description", "Traditionally prepared and consumed by the Ngemba people from the Northwest Region of Cameroon, achu soup consists of boiled and pounded cocoyams, canwa (lime stone), water, spices, and palm oil. The palm oil changes the color of the soup to yellow, which is the reason why achu soup is also known as yellow soup."], ["price", 400], ["menu_id", 3], ["created_at", "2023-03-31 07:18:10.311974"], ["updated_at", "2023-03-31 07:18:10.311974"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMenu Load (0.2ms)[0m  [1m[34mSELECT "menus".* FROM "menus" WHERE "menus"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMenuItem Create (0.3ms)[0m  [1m[32mINSERT INTO "menu_items" ("name", "image_url", "description", "price", "menu_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Afang Soup"], ["image_url", "https://cdn.tasteatlas.com/images/dishes/662c50d9d8ec4760bb12d705f64897d6.jpg?mw=1300"], ["description", "Afang is a traditional soup hailing from the southeastern parts of Nigeria. It's made with a combination of afang leaves, water leaves, dried fish, beef, onions, red palm oil, ground crayfish, and seasoning cubes. The afang leaves are ground or pounded and the onions are chopped before the beef is boiled with the onions and seasoning cubes in a small quantity of water."], ["price", 400], ["menu_id", 3], ["created_at", "2023-03-31 07:18:10.324989"], ["updated_at", "2023-03-31 07:18:10.324989"]]
+  [1m[36mTRANSACTION (5.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMenu Load (0.2ms)[0m  [1m[34mSELECT "menus".* FROM "menus" WHERE "menus"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mMenuItem Create (0.4ms)[0m  [1m[32mINSERT INTO "menu_items" ("name", "image_url", "description", "price", "menu_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Loubia"], ["image_url", "https://cdn.tasteatlas.com/Images/Dishes/81b54d44a09b43ce90e89ecf447d11f7.jpg?mw=1300"], ["description", "This Morrocan dish consists of stewed white beans, where the beans that have been simmered in a zesty tomato-based sauce are typically scooped up with Moroccan bread. It is comfort food that can be served both as an appetizer, garnished with some coriander or parsley, and as a side dish - especially when used as an accompaniment to fried fish."], ["price", 750], ["menu_id", 4], ["created_at", "2023-03-31 07:18:10.338279"], ["updated_at", "2023-03-31 07:18:10.338279"]]
+  [1m[36mTRANSACTION (6.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMenu Load (0.1ms)[0m  [1m[34mSELECT "menus".* FROM "menus" WHERE "menus"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mMenuItem Create (0.3ms)[0m  [1m[32mINSERT INTO "menu_items" ("name", "image_url", "description", "price", "menu_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Moin moin"], ["image_url", "https://cdn.tasteatlas.com/images/dishes/87f9257608154f22bbdceea7d2f95fc9.jpg?mw=1300"], ["description", "Moin moin is a Nigerian dish consisting of ground beans or black-eyed peas, onions, oil, and freshly ground peppers such as chili, bell pepper, and Scotch bonnet. The dish is usually served as an accompaniment to jollof rice, fried plantains, and akamu."], ["price", 750], ["menu_id", 4], ["created_at", "2023-03-31 07:18:10.351760"], ["updated_at", "2023-03-31 07:18:10.351760"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMenu Load (0.1ms)[0m  [1m[34mSELECT "menus".* FROM "menus" WHERE "menus"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mMenuItem Create (0.4ms)[0m  [1m[32mINSERT INTO "menu_items" ("name", "image_url", "description", "price", "menu_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Kafteji"], ["image_url", "https://cdn.tasteatlas.com/images/dishes/31cd64e211564c3a8a8485f42e014773.jpg?mw=1300"], ["description", "Kafteji is a traditional Tunisian dish made with fried vegetables. Typical veggies used in the dish include eggplants, bell peppers, potatoes, tomatoes, zucchinis, and pumpkins. The vegetables are fried, chopped, then combined with (often fried) eggs and seasonings."], ["price", 750], ["menu_id", 4], ["created_at", "2023-03-31 07:18:10.362076"], ["updated_at", "2023-03-31 07:18:10.362076"]]
+  [1m[36mTRANSACTION (5.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMenu Load (0.1ms)[0m  [1m[34mSELECT "menus".* FROM "menus" WHERE "menus"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mMenuItem Create (0.3ms)[0m  [1m[32mINSERT INTO "menu_items" ("name", "image_url", "description", "price", "menu_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Mchicha"], ["image_url", "https://cdn.tasteatlas.com/images/dishes/74bb396415974864b611c299280d3f1d.jpg?mw=1300"], ["description", "Mchicha is the most popular Tanzanian dish. This thick and creamy vegetarian meal is usually prepared with leafy vegetables such as amaranth or spinach with added grated coconut, coconut milk, peanut butter, tomatoes, and onions. It is recommended to serve mchicha with rice, ugali, or samp and beans on the side in order to make a satisfying main course."], ["price", 750], ["menu_id", 4], ["created_at", "2023-03-31 07:18:10.375388"], ["updated_at", "2023-03-31 07:18:10.375388"]]
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMenu Load (0.2ms)[0m  [1m[34mSELECT "menus".* FROM "menus" WHERE "menus"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mMenuItem Create (0.3ms)[0m  [1m[32mINSERT INTO "menu_items" ("name", "image_url", "description", "price", "menu_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Githeri"], ["image_url", "https://cdn.tasteatlas.com/Images/Dishes/90200d42c5254588a0ec27df96271d15.jpg?mw=1300"], ["description", "Githeri is a Kenyan staple food consisting of beans and maize that are stewed with onions, tomatoes, and sometimes potatoes or meat chunks. The stew is often flavored with cumin, turmeric, or chili powder. It is traditionally served on its own, although it can be served with rice or crusty bread on the side."], ["price", 750], ["menu_id", 4], ["created_at", "2023-03-31 07:18:10.389129"], ["updated_at", "2023-03-31 07:18:10.389129"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMenu Load (0.1ms)[0m  [1m[34mSELECT "menus".* FROM "menus" WHERE "menus"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mMenuItem Create (0.4ms)[0m  [1m[32mINSERT INTO "menu_items" ("name", "image_url", "description", "price", "menu_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Daraba"], ["image_url", "https://cdn.tasteatlas.com/images/dishes/0661e7dea98644b3a9873ae9949bf9cd.jpg?mw=1300"], ["description", "Simple, healthy, and inexpensive, daraba is a Chadian stew made with chopped okra, mixed vegetables, tomatoes, stock cubes, and smooth peanut butter, giving the dish a unique flavor. It is usually served with rice, boiled cassava, or boiled plantains on the side."], ["price", 750], ["menu_id", 4], ["created_at", "2023-03-31 07:18:10.401535"], ["updated_at", "2023-03-31 07:18:10.401535"]]
+  [1m[36mTRANSACTION (5.8ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/users/register" for 127.0.0.1 at 2023-03-31 10:21:01 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Error occurred while parsing request parameters.
+Contents:
+
+{
+ {
+  "username": "string",
+  "email": "user@example.com",
+  "address": "Lavington"
+  "password": "string"
+}
+```
+}
+Processing by UsersController#show as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Class (0.17ms)
+Completed 200 OK in 31ms (Views: 15.8ms | ActiveRecord: 0.9ms | Allocations: 4429)
+
+
+Started GET "/users/register" for 127.0.0.1 at 2023-03-31 10:21:19 +0300
+Error occurred while parsing request parameters.
+Contents:
+
+{
+ {
+  "username": "string",
+  "email": "user@example.com",
+  "address": "Lavington"
+  "password": "string"
+}
+
+Processing by UsersController#show as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Class (0.09ms)
+Completed 200 OK in 6ms (Views: 1.8ms | ActiveRecord: 0.1ms | Allocations: 1333)
+
+
+Started GET "/users/register" for 127.0.0.1 at 2023-03-31 10:21:42 +0300
+Error occurred while parsing request parameters.
+Contents:
+
+
+ {
+  "username": "string",
+  "email": "user@example.com",
+  "address": "Lavington"
+  "password": "string"
+}
+
+Processing by UsersController#show as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Class (0.12ms)
+Completed 200 OK in 5ms (Views: 0.9ms | ActiveRecord: 0.1ms | Allocations: 1339)
+
+
+Started GET "/users" for 127.0.0.1 at 2023-03-31 10:21:55 +0300
+Error occurred while parsing request parameters.
+Contents:
+
+
+ {
+  "username": "string",
+  "email": "user@example.com",
+  "address": "Lavington"
+  "password": "string"
+}
+
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.3ms)
+Completed 200 OK in 48ms (Views: 47.0ms | ActiveRecord: 0.3ms | Allocations: 2343)
+
+
+Started GET "/users/signin" for 127.0.0.1 at 2023-03-31 10:22:08 +0300
+Error occurred while parsing request parameters.
+Contents:
+
+
+ {
+  "username": "string",
+  "email": "user@example.com",
+  "address": "Lavington"
+  "password": "string"
+}
+
+Processing by UsersController#show as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Class (0.06ms)
+Completed 200 OK in 4ms (Views: 0.6ms | ActiveRecord: 0.1ms | Allocations: 1339)
+
+
+Started GET "/users/signup" for 127.0.0.1 at 2023-03-31 10:22:44 +0300
+Error occurred while parsing request parameters.
+Contents:
+
+
+ {
+  "username": "string",
+  "email": "user@example.com",
+  "address": "Lavington"
+  "password": "string"
+}
+
+Processing by UsersController#show as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Class (0.14ms)
+Completed 200 OK in 10ms (Views: 5.8ms | ActiveRecord: 0.2ms | Allocations: 1324)
+
+
+Started GET "/users/signup" for 127.0.0.1 at 2023-03-31 10:22:52 +0300
+Error occurred while parsing request parameters.
+Contents:
+
+
+ {
+  "username": "string",
+  "email": "user@example.com",
+  "address": "Lavington"
+  "password": "string"
+}
+
+Processing by UsersController#show as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Class (0.11ms)
+Completed 200 OK in 7ms (Views: 1.0ms | ActiveRecord: 0.1ms | Allocations: 1323)
+
+
+Started GET "/users/signup" for 127.0.0.1 at 2023-03-31 10:23:55 +0300
+Error occurred while parsing request parameters.
+Contents:
+
+ {
+  "username": "string",
+  "email": "user@example.com",
+  "address": "Lavington"
+  "password": "string"
+}
+
+Processing by UsersController#show as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Class (0.09ms)
+Completed 200 OK in 4ms (Views: 0.7ms | ActiveRecord: 0.2ms | Allocations: 1323)
+
+
+Started GET "/users/signup" for 127.0.0.1 at 2023-03-31 10:24:14 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Error occurred while parsing request parameters.
+Contents:
+
+ {
+  "username": "string",
+  "email": "user@example.com",
+  "address": "Lavington"
+  "password": "string"
+}
+
+Processing by UsersController#show as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Class (0.42ms)
+Completed 200 OK in 22ms (Views: 7.2ms | ActiveRecord: 0.9ms | Allocations: 3819)
+
+
+Started GET "/users/signup" for 127.0.0.1 at 2023-03-31 10:25:05 +0300
+Processing by UsersController#show as */*
+  Parameters: {"username"=>"freds", "email"=>"f@mail.com", "address"=>"home", "password"=>"[FILTERED]", "id"=>"signup", "user"=>{"username"=>"freds", "email"=>"f@mail.com", "address"=>"home"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Class (0.1ms)
+Completed 200 OK in 4ms (Views: 0.6ms | ActiveRecord: 0.5ms | Allocations: 1303)
+
+
+Started GET "/menu" for 127.0.0.1 at 2023-03-31 10:25:40 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/menu"):
+  
+Started GET "/signup" for 127.0.0.1 at 2023-03-31 10:25:52 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/signup"):
+  
+Started POST "/signup" for 127.0.0.1 at 2023-03-31 10:26:01 +0300
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"freds", "email"=>"f@mail.com", "address"=>"home", "password"=>"[FILTERED]", "user"=>{"username"=>"freds", "email"=>"f@mail.com", "address"=>"home"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f05c4019160>, params: {"username"=>"freds", "email"=>"f@mail.com", "address"=>"home", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"freds", "email"=>"f@mail.com", "address"=>"home"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "f@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "address", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "freds"], ["email", "f@mail.com"], ["password_digest", "[FILTERED]"], ["address", "home"], ["created_at", "2023-03-31 07:26:01.453211"], ["updated_at", "2023-03-31 07:26:01.453211"]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (11.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "f@mail.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.51ms)
+Completed 201 Created in 448ms (Views: 9.8ms | ActiveRecord: 12.8ms | Allocations: 22023)
+
+
+Started POST "/menu" for 127.0.0.1 at 2023-03-31 10:26:27 +0300
+  
+ActionController::RoutingError (No route matches [POST] "/menu"):
+  
+Started POST "/login" for ::1 at 2023-03-31 10:27:35 +0300
+  
+ActionController::RoutingError (uninitialized constant SessionsController
+Did you mean?  SessionController):
+  
+Started POST "/login" for ::1 at 2023-03-31 10:28:38 +0300
+  
+ActionController::RoutingError (uninitialized constant SessionsController
+Did you mean?  SessionController):
+  
+Started POST "/login" for ::1 at 2023-03-31 10:30:27 +0300
+  
+ActionController::RoutingError (uninitialized constant SessionsController
+Did you mean?  SessionController):
+  
+Started POST "/login" for ::1 at 2023-03-31 10:31:18 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (uninitialized constant SessionsController
+Did you mean?  SessionController):
+  
+Started POST "/login" for ::1 at 2023-03-31 10:31:40 +0300
+  
+ActionController::RoutingError (uninitialized constant SessionsController
+Did you mean?  SessionController):
+  
+Started POST "/login" for ::1 at 2023-03-31 10:33:24 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"freds", "password"=>"[FILTERED]", "session"=>{"username"=>"freds", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "freds"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.17ms)
+Completed 401 Unauthorized in 391ms (Views: 8.8ms | ActiveRecord: 1.4ms | Allocations: 20513)
+
+
+Started POST "/signup" for ::1 at 2023-03-31 10:33:58 +0300
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"ket", "email"=>"tuweielly@gmail.com", "address"=>"home", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "user"=>{"username"=>"ket", "email"=>"tuweielly@gmail.com", "address"=>"home"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f54ac037ea8>, params: {"username"=>"ket", "email"=>"tuweielly@gmail.com", "address"=>"home", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"ket", "email"=>"tuweielly@gmail.com", "address"=>"home"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "tuweielly@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "address", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "ket"], ["email", "tuweielly@gmail.com"], ["password_digest", "[FILTERED]"], ["address", "home"], ["created_at", "2023-03-31 07:33:58.456629"], ["updated_at", "2023-03-31 07:33:58.456629"]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (10.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "tuweielly@gmail.com"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.55ms)
+Completed 201 Created in 370ms (Views: 13.4ms | ActiveRecord: 11.9ms | Allocations: 5910)
+
+
+Started DELETE "/logout" for ::1 at 2023-03-31 10:36:33 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#destroy as */*
+Completed 204 No Content in 6ms (ActiveRecord: 0.0ms | Allocations: 146)
+
+
+Started POST "/login" for ::1 at 2023-03-31 10:36:40 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"ket", "password"=>"[FILTERED]", "session"=>{"username"=>"ket", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "ket"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.45ms)
+Completed 201 Created in 409ms (Views: 25.5ms | ActiveRecord: 1.7ms | Allocations: 23315)
+
+
+Started POST "/login" for ::1 at 2023-03-31 10:36:41 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"ket", "password"=>"[FILTERED]", "session"=>{"username"=>"ket", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "ket"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.33ms)
+Completed 201 Created in 324ms (Views: 1.2ms | ActiveRecord: 0.2ms | Allocations: 788)
+
+
+Started POST "/login" for ::1 at 2023-03-31 10:36:49 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"ket", "password"=>"[FILTERED]", "session"=>{"username"=>"ket", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "ket"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.39ms)
+Completed 201 Created in 312ms (Views: 1.0ms | ActiveRecord: 0.2ms | Allocations: 785)
+
+
+Started POST "/login" for ::1 at 2023-03-31 10:38:13 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"ket", "password"=>"[FILTERED]", "session"=>{"username"=>"ket", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "ket"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.28ms)
+Completed 201 Created in 316ms (Views: 0.9ms | ActiveRecord: 0.2ms | Allocations: 789)
+
+
+Started POST "/login" for ::1 at 2023-03-31 10:41:06 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"ket", "password"=>"[FILTERED]", "session"=>{"username"=>"ket", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "ket"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.26ms)
+Completed 201 Created in 328ms (Views: 0.9ms | ActiveRecord: 0.2ms | Allocations: 772)
+
+
+Started POST "/signup" for ::1 at 2023-03-31 10:41:35 +0300
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"mrket", "email"=>"m@mail.com", "address"=>"ket", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "user"=>{"username"=>"mrket", "email"=>"m@mail.com", "address"=>"ket"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "m@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "m@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+Completed 422 Unprocessable Entity in 2293ms (Views: 5.4ms | ActiveRecord: 0.9ms | Allocations: 1025578)
+
+
+Started POST "/signup" for ::1 at 2023-03-31 10:41:39 +0300
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"mrket", "email"=>"m@mail.com", "address"=>"ket", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "user"=>{"username"=>"mrket", "email"=>"m@mail.com", "address"=>"ket"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "m@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "m@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Completed 422 Unprocessable Entity in 17ms (Views: 4.6ms | ActiveRecord: 0.7ms | Allocations: 3152)
+
+
+Started POST "/signup" for ::1 at 2023-03-31 10:41:40 +0300
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"mrket", "email"=>"m@mail.com", "address"=>"ket", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "user"=>{"username"=>"mrket", "email"=>"m@mail.com", "address"=>"ket"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "m@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "m@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.14ms)
+Completed 422 Unprocessable Entity in 19ms (Views: 1.1ms | ActiveRecord: 0.7ms | Allocations: 3150)
+
+
+Started POST "/signup" for ::1 at 2023-03-31 10:41:40 +0300
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"mrket", "email"=>"m@mail.com", "address"=>"ket", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "user"=>{"username"=>"mrket", "email"=>"m@mail.com", "address"=>"ket"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "m@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "m@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.12ms)
+Completed 422 Unprocessable Entity in 15ms (Views: 1.8ms | ActiveRecord: 0.7ms | Allocations: 3147)
+
+
+Started POST "/signup" for ::1 at 2023-03-31 10:41:40 +0300
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"mrket", "email"=>"m@mail.com", "address"=>"ket", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "user"=>{"username"=>"mrket", "email"=>"m@mail.com", "address"=>"ket"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "m@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "m@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.15ms)
+Completed 422 Unprocessable Entity in 15ms (Views: 1.4ms | ActiveRecord: 0.9ms | Allocations: 3147)
+
+
+Started POST "/signup" for ::1 at 2023-03-31 10:41:41 +0300
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"mrket", "email"=>"m@mail.com", "address"=>"ket", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "user"=>{"username"=>"mrket", "email"=>"m@mail.com", "address"=>"ket"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "m@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "m@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.12ms)
+Completed 422 Unprocessable Entity in 12ms (Views: 1.2ms | ActiveRecord: 0.7ms | Allocations: 3150)
+
+
+Started POST "/signup" for ::1 at 2023-03-31 10:41:41 +0300
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"mrket", "email"=>"m@mail.com", "address"=>"ket", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "user"=>{"username"=>"mrket", "email"=>"m@mail.com", "address"=>"ket"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "m@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "m@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.12ms)
+Completed 422 Unprocessable Entity in 16ms (Views: 2.6ms | ActiveRecord: 0.7ms | Allocations: 3147)
+
+
+Started POST "/login" for ::1 at 2023-03-31 10:41:59 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"ket", "password"=>"[FILTERED]", "session"=>{"username"=>"ket", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "ket"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.3ms)
+Completed 201 Created in 333ms (Views: 0.9ms | ActiveRecord: 0.2ms | Allocations: 770)
+
+
+Started DELETE "/logout" for ::1 at 2023-03-31 10:42:06 +0300
+Processing by SessionsController#destroy as */*
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms | Allocations: 89)
+
+
+Started POST "/login" for ::1 at 2023-03-31 10:42:07 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"ket", "password"=>"[FILTERED]", "session"=>{"username"=>"ket", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "ket"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.45ms)
+Completed 201 Created in 320ms (Views: 5.7ms | ActiveRecord: 0.2ms | Allocations: 770)
+
+
+Started POST "/login" for ::1 at 2023-03-31 10:42:09 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"ket", "password"=>"[FILTERED]", "session"=>{"username"=>"ket", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "ket"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+Started POST "/login" for ::1 at 2023-03-31 10:42:10 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"ket", "password"=>"[FILTERED]", "session"=>{"username"=>"ket", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "ket"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+Started POST "/login" for ::1 at 2023-03-31 10:42:10 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"ket", "password"=>"[FILTERED]", "session"=>{"username"=>"ket", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "ket"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.4ms)
+Completed 201 Created in 383ms (Views: 3.6ms | ActiveRecord: 0.2ms | Allocations: 4452)
+
+
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.43ms)
+Completed 201 Created in 431ms (Views: 1.8ms | ActiveRecord: 0.7ms | Allocations: 3500)
+
+
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.43ms)
+Completed 201 Created in 412ms (Views: 1.1ms | ActiveRecord: 2.8ms | Allocations: 2403)
+
+
+Started POST "/login" for ::1 at 2023-03-31 10:42:12 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"ket", "password"=>"[FILTERED]", "session"=>{"username"=>"ket", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "ket"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.38ms)
+Completed 201 Created in 307ms (Views: 1.1ms | ActiveRecord: 0.2ms | Allocations: 774)
+
+
+Started POST "/signup" for ::1 at 2023-03-31 10:42:51 +0300
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"tuwei", "email"=>"kip@mail.com", "address"=>"home", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "user"=>{"username"=>"tuwei", "email"=>"kip@mail.com", "address"=>"home"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kip@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kip@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 422 Unprocessable Entity in 16ms (Views: 0.6ms | ActiveRecord: 0.7ms | Allocations: 3147)
+
+
+Started POST "/login" for ::1 at 2023-03-31 10:43:05 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"home", "password"=>"[FILTERED]", "session"=>{"username"=>"home", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "home"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 401 Unauthorized in 5ms (Views: 0.5ms | ActiveRecord: 0.2ms | Allocations: 569)
+
+
+Started POST "/login" for ::1 at 2023-03-31 10:43:06 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"home", "password"=>"[FILTERED]", "session"=>{"username"=>"home", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "home"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.12ms)
+Completed 401 Unauthorized in 4ms (Views: 2.1ms | ActiveRecord: 0.2ms | Allocations: 569)
+
+
+Started POST "/login" for ::1 at 2023-03-31 10:43:07 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"home", "password"=>"[FILTERED]", "session"=>{"username"=>"home", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "home"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 401 Unauthorized in 4ms (Views: 1.6ms | ActiveRecord: 0.2ms | Allocations: 569)
+
+
+Started POST "/login" for ::1 at 2023-03-31 10:43:07 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"home", "password"=>"[FILTERED]", "session"=>{"username"=>"home", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "home"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 401 Unauthorized in 4ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 569)
+
+
+Started POST "/login" for ::1 at 2023-03-31 10:43:07 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"home", "password"=>"[FILTERED]", "session"=>{"username"=>"home", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "home"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 401 Unauthorized in 4ms (Views: 2.3ms | ActiveRecord: 0.2ms | Allocations: 569)
+
+
+Started POST "/login" for ::1 at 2023-03-31 10:43:08 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"home", "password"=>"[FILTERED]", "session"=>{"username"=>"home", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "home"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Completed 401 Unauthorized in 4ms (Views: 0.7ms | ActiveRecord: 0.2ms | Allocations: 569)
+
+
+Started POST "/login" for ::1 at 2023-03-31 10:43:08 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"home", "password"=>"[FILTERED]", "session"=>{"username"=>"home", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "home"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 401 Unauthorized in 2ms (Views: 0.7ms | ActiveRecord: 0.2ms | Allocations: 569)
+
+
+Started POST "/login" for ::1 at 2023-03-31 10:43:08 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"home", "password"=>"[FILTERED]", "session"=>{"username"=>"home", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "home"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Completed 401 Unauthorized in 3ms (Views: 0.7ms | ActiveRecord: 0.2ms | Allocations: 569)
+
+
+Started POST "/login" for ::1 at 2023-03-31 10:43:08 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"home", "password"=>"[FILTERED]", "session"=>{"username"=>"home", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "home"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+Completed 401 Unauthorized in 3ms (Views: 0.8ms | ActiveRecord: 0.2ms | Allocations: 569)
+
+
+Started POST "/login" for ::1 at 2023-03-31 10:43:08 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"home", "password"=>"[FILTERED]", "session"=>{"username"=>"home", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "home"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Completed 401 Unauthorized in 3ms (Views: 0.7ms | ActiveRecord: 0.2ms | Allocations: 569)
+
+
+Started POST "/login" for ::1 at 2023-03-31 10:43:09 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"home", "password"=>"[FILTERED]", "session"=>{"username"=>"home", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "home"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 401 Unauthorized in 2ms (Views: 0.6ms | ActiveRecord: 0.1ms | Allocations: 569)
+
+
+Started POST "/signup" for ::1 at 2023-03-31 10:43:50 +0300
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"me", "email"=>"me@gmail.com", "address"=>"hom", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "user"=>{"username"=>"me", "email"=>"me@gmail.com", "address"=>"hom"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f3bfc747108>, params: {"username"=>"me", "email"=>"me@gmail.com", "address"=>"hom", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"me", "email"=>"me@gmail.com", "address"=>"hom"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "me@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "address", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "me"], ["email", "me@gmail.com"], ["password_digest", "[FILTERED]"], ["address", "hom"], ["created_at", "2023-03-31 07:43:50.886070"], ["updated_at", "2023-03-31 07:43:50.886070"]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (22.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "me@gmail.com"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.69ms)
+Completed 201 Created in 359ms (Views: 3.5ms | ActiveRecord: 25.8ms | Allocations: 5874)
+
+
+Started DELETE "/logout" for ::1 at 2023-03-31 10:43:56 +0300
+Processing by SessionsController#destroy as */*
+Completed 204 No Content in 1ms (ActiveRecord: 0.0ms | Allocations: 89)
+
+
+Started POST "/login" for ::1 at 2023-03-31 10:43:57 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"home", "password"=>"[FILTERED]", "session"=>{"username"=>"home", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "home"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 401 Unauthorized in 3ms (Views: 0.8ms | ActiveRecord: 0.2ms | Allocations: 791)
+
+
+Started POST "/login" for ::1 at 2023-03-31 10:43:57 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"home", "password"=>"[FILTERED]", "session"=>{"username"=>"home", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "home"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Completed 401 Unauthorized in 3ms (Views: 0.6ms | ActiveRecord: 0.2ms | Allocations: 569)
+
+
+Started POST "/login" for ::1 at 2023-03-31 10:43:58 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"home", "password"=>"[FILTERED]", "session"=>{"username"=>"home", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "home"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 401 Unauthorized in 2ms (Views: 0.6ms | ActiveRecord: 0.2ms | Allocations: 569)
+
+
+Started POST "/login" for ::1 at 2023-03-31 10:43:58 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"home", "password"=>"[FILTERED]", "session"=>{"username"=>"home", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "home"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Completed 401 Unauthorized in 3ms (Views: 0.7ms | ActiveRecord: 0.2ms | Allocations: 569)
+
+
+Started POST "/login" for ::1 at 2023-03-31 10:43:58 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"home", "password"=>"[FILTERED]", "session"=>{"username"=>"home", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "home"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 401 Unauthorized in 2ms (Views: 0.7ms | ActiveRecord: 0.2ms | Allocations: 569)
+
+
+Started POST "/login" for ::1 at 2023-03-31 10:43:58 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"home", "password"=>"[FILTERED]", "session"=>{"username"=>"home", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "home"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Completed 401 Unauthorized in 3ms (Views: 0.7ms | ActiveRecord: 0.2ms | Allocations: 569)
+
+
+Started POST "/login" for ::1 at 2023-03-31 10:43:58 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"home", "password"=>"[FILTERED]", "session"=>{"username"=>"home", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "home"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.12ms)
+Completed 401 Unauthorized in 3ms (Views: 0.8ms | ActiveRecord: 0.2ms | Allocations: 569)
+
+
+Started POST "/login" for ::1 at 2023-03-31 10:43:58 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"home", "password"=>"[FILTERED]", "session"=>{"username"=>"home", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "home"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 401 Unauthorized in 2ms (Views: 0.7ms | ActiveRecord: 0.2ms | Allocations: 569)
+
+
+Started POST "/login" for ::1 at 2023-03-31 10:43:59 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"home", "password"=>"[FILTERED]", "session"=>{"username"=>"home", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "home"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Completed 401 Unauthorized in 4ms (Views: 1.2ms | ActiveRecord: 0.2ms | Allocations: 569)
+
+
+Started POST "/login" for ::1 at 2023-03-31 10:44:03 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"me", "password"=>"[FILTERED]", "session"=>{"username"=>"me", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "me"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+Started POST "/login" for ::1 at 2023-03-31 10:44:03 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"me", "password"=>"[FILTERED]", "session"=>{"username"=>"me", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "me"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+Started POST "/login" for ::1 at 2023-03-31 10:44:03 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"me", "password"=>"[FILTERED]", "session"=>{"username"=>"me", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "me"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.39ms)
+Completed 201 Created in 439ms (Views: 6.9ms | ActiveRecord: 0.2ms | Allocations: 4475)
+
+
+Started POST "/login" for ::1 at 2023-03-31 10:44:03 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"me", "password"=>"[FILTERED]", "session"=>{"username"=>"me", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "me"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+Started POST "/login" for ::1 at 2023-03-31 10:44:04 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"me", "password"=>"[FILTERED]", "session"=>{"username"=>"me", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "me"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.36ms)
+Completed 201 Created in 618ms (Views: 3.9ms | ActiveRecord: 0.8ms | Allocations: 6997)
+
+
+Started POST "/login" for ::1 at 2023-03-31 10:44:04 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"me", "password"=>"[FILTERED]", "session"=>{"username"=>"me", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "me"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+Started POST "/login" for ::1 at 2023-03-31 10:44:04 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"me", "password"=>"[FILTERED]", "session"=>{"username"=>"me", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (5.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "me"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.37ms)
+Completed 201 Created in 1119ms (Views: 4.7ms | ActiveRecord: 0.6ms | Allocations: 9385)
+
+
+Started POST "/login" for ::1 at 2023-03-31 10:44:04 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"me", "password"=>"[FILTERED]", "session"=>{"username"=>"me", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "me"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.4ms)
+Completed 201 Created in 1019ms (Views: 6.7ms | ActiveRecord: 0.2ms | Allocations: 9234)
+
+
+Started POST "/login" for ::1 at 2023-03-31 10:44:04 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"me", "password"=>"[FILTERED]", "session"=>{"username"=>"me", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "me"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.37ms)
+Completed 201 Created in 941ms (Views: 1.2ms | ActiveRecord: 0.7ms | Allocations: 9948)
+
+
+Started POST "/login" for ::1 at 2023-03-31 10:44:05 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"me", "password"=>"[FILTERED]", "session"=>{"username"=>"me", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "me"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (9.41ms)
+Completed 201 Created in 978ms (Views: 10.1ms | ActiveRecord: 0.1ms | Allocations: 9795)
+
+
+Started POST "/login" for ::1 at 2023-03-31 10:44:05 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"me", "password"=>"[FILTERED]", "session"=>{"username"=>"me", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "me"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.48ms)
+Completed 201 Created in 1165ms (Views: 2.8ms | ActiveRecord: 5.6ms | Allocations: 10509)
+
+
+Started POST "/login" for ::1 at 2023-03-31 10:44:05 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"me", "password"=>"[FILTERED]", "session"=>{"username"=>"me", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "me"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.39ms)
+Completed 201 Created in 784ms (Views: 1.1ms | ActiveRecord: 0.2ms | Allocations: 5564)
+
+
+Started POST "/login" for ::1 at 2023-03-31 10:44:05 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"me", "password"=>"[FILTERED]", "session"=>{"username"=>"me", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "me"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.39ms)
+Completed 201 Created in 1124ms (Views: 7.8ms | ActiveRecord: 0.2ms | Allocations: 10618)
+
+
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.35ms)
+Completed 201 Created in 1189ms (Views: 7.5ms | ActiveRecord: 0.2ms | Allocations: 13475)
+
+
+Started POST "/login" for ::1 at 2023-03-31 10:44:06 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"me", "password"=>"[FILTERED]", "session"=>{"username"=>"me", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "me"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.37ms)
+Completed 201 Created in 945ms (Views: 9.7ms | ActiveRecord: 0.1ms | Allocations: 8690)
+
+
+Started POST "/login" for ::1 at 2023-03-31 10:44:06 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"me", "password"=>"[FILTERED]", "session"=>{"username"=>"me", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "me"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.38ms)
+Completed 201 Created in 742ms (Views: 7.2ms | ActiveRecord: 0.1ms | Allocations: 8712)
+
+
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.39ms)
+Completed 201 Created in 852ms (Views: 1.1ms | ActiveRecord: 0.2ms | Allocations: 7068)
+
+
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.39ms)
+Completed 201 Created in 556ms (Views: 4.4ms | ActiveRecord: 0.2ms | Allocations: 2250)
+
+
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.4ms)
+Completed 201 Created in 802ms (Views: 3.2ms | ActiveRecord: 0.1ms | Allocations: 5405)
+
+
