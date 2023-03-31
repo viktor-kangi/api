@@ -1,10 +1,9 @@
 # Afrikaan Restaurant API
 ## Author Name:
-Andrew Omondi Ochieng
+
 
 
 ## Project Name:
-Afrikaan Restaurant
 
 
 ## Description of the program:
@@ -14,16 +13,16 @@ The program is a food ordering application where one can order food from one of 
 ## Technology Used
 * Ruby on Rails
 * Ruby
-* Railway Hosting
+*
 
 ## Setup Requirements
 
     - Git (to clone the repository)
     - Ruby 2.7.4
     - Rails 7.0.4
-    - PostgreSQL (to run the database)
+    - SQLite3 (to run the database)
     - Postman (to test the API)
-    - Railway cli (if you want to deploy to Railway)
+    
 
 ## Setup Installation
 
@@ -34,12 +33,7 @@ The program is a food ordering application where one can order food from one of 
         - run rails db:migrate db:seed to start off the migrations and 
     - Open Postman to test the API endpoints or use the following link:
         - http://localhost:3000/<the_endpoint>
-    - Run the following commands if you want to deploy to Railway:
-        - railway login
-        - railway init
-        - railway add
-        - railway up
-
+    
 
 
 ## Endpoints
