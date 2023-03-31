@@ -18,7 +18,7 @@ The program is a food ordering application where one can order food from one of 
 ## Setup Requirements
 
     - Git (to clone the repository)
-    - Ruby 2.7.4
+    - Ruby 3.0.2
     - Rails 7.0.4
     - SQLite3 (to run the database)
     - Postman (to test the API)

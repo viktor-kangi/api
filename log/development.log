@@ -973,3 +973,31 @@ Completed 201 Created in 556ms (Views: 4.4ms | ActiveRecord: 0.2ms | Allocations
 Completed 201 Created in 802ms (Views: 3.2ms | ActiveRecord: 0.1ms | Allocations: 5405)
 
 
+Started POST "/users/create" for 127.0.0.1 at 2023-03-31 11:07:40 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [POST] "/users/create"):
+  
+Started POST "/users/create" for 127.0.0.1 at 2023-03-31 11:14:45 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [POST] "/users/create"):
+  
+Started POST "/users/create" for 127.0.0.1 at 2023-03-31 11:15:05 +0300
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"freeds", "email"=>"fee@mail.com", "address"=>"home", "password"=>"[FILTERED]", "user"=>{"username"=>"freeds", "email"=>"fee@mail.com", "address"=>"home"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007fd020585500>, params: {"username"=>"freeds", "email"=>"fee@mail.com", "address"=>"home", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"freeds", "email"=>"fee@mail.com", "address"=>"home"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "fee@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "address", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "freeds"], ["email", "fee@mail.com"], ["password_digest", "[FILTERED]"], ["address", "home"], ["created_at", "2023-03-31 08:15:06.132680"], ["updated_at", "2023-03-31 08:15:06.132680"]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (14.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "fee@mail.com"], ["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.62ms)
+Completed 201 Created in 458ms (Views: 19.3ms | ActiveRecord: 17.1ms | Allocations: 25303)
+
+
